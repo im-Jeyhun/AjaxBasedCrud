@@ -1,0 +1,19 @@
+﻿@using System.Text.Json;
+@using DemoApplication.Areas.Admin.ViewModels.Author;
+@model UpdateViewModel
+
+
+
+<div class="mb-3 row">
+    <label for="txtFirstName" class="col-sm-2 col-form-label ad">Name</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" id="txtFirstName" placeholder="Name" value="@Model.Name">
+
+    </div>
+</div>
+<div class="mb-3 row">
+    <label for="txtLastName" class="col-sm-2 col-form-label ad">Surname</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" id="txtLastName" placeholder="Lastname" value="@Model.LastName">
+    </div>
+</div>

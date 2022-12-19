@@ -420,9 +420,49 @@
                             $(temp).find(".links-td").html(links);
 
 
-                         
+                            $(temp).removeClass("d-none")
 
 
+                            $("#author-area").append(temp);
+
+
+                          
+                        }
+                    }
+                );
+
+
+            });
+
+
+
+
+            
+            $(".update-author").click(function() {
+
+                let url = this.nextElementSibling.href;
+
+                console.log(url)
+
+
+                $.ajax(
+                    {
+                        type: "PUT", //HTTP POST Method
+                        url: url, // Controller/View
+                        data: { //Passing data
+                            Name: $("#txtFirstName").val(), //Reading text box values using Jquer
+                            Lastname: $("#txtLastName").val(),
+                        },
+                        success: function(data) {
+
+                            //var temp = $("#row-template").clone();
+
+                            //var links = `<button data-id="${data}" type="button" onclick="deleteAuthor(this)">Delete</button>
+                            //        <a class="primary-add" href="/admin/author/delete-author/${data}"></a>`
+
+                            //$(temp).find(".name-td").text($("#txtFirstName").val())
+                            //$(temp).find(".last-td").text($("#txtLastName").val())
+                            //$(temp).find(".links-td").html(links);
 
 
                             $(temp).removeClass("d-none")
@@ -431,74 +471,47 @@
                             $("#author-area").append(temp);
 
 
-                            //$('#author-area').html(null)
-
-
-                            //let result = "";
-
-                            ////console.log(authorArea)
-
-                            //$(data).each(function(index, author) {
-
-
-                            //         result += `<tr>
-                            //                 <td> ${author.name} </td>
-                            //                 <td> ${author.lastName}</td>
-                            //                  <td class="text-end">
-                            //                <a href="#"><i class="las la-pen text-secondary font-16"></i></a>
-                            //                <a href="#"><i class="las la-trash-alt text-secondary font-16"></i></a>
-                            //            </td>
-                            //          </tr>`
-
-
-                            //});
-
-
-                            //$('#author-area').html(result)
+                          
                         }
                     }
                 );
 
 
             });
-
-
-
-
-
        
 
            
-          $(".delete-author").click(function(e){
-                console.log("hi")
-                e.preventDefault();
-                console.log(e.target)
+          //$(".delete-author").click(function(e){
+          //      console.log("hi")
+          //      e.preventDefault();
+          //      console.log(e.target)
 
-                var id = e.target.getAttribute("data-id");
-
-
-                console.log(id)
-
-                let url = e.target.nextElementSibling.href;
-
-                console.log(url)
-
-                $.ajax(
-                    {
-                        type: "DELETE", //HTTP POST Method
-                        url: url, // Controller/View
-                        success: function(data) {
-
-                            document.getElementById(id).remove();
-                        }
-                    }
-                );
+          //      var id = e.target.getAttribute("data-id");
 
 
+          //      console.log(id)
 
-            });
+          //      let url = e.target.nextElementSibling.href;
 
-            function deleteAuthor(sender) {
+          //      console.log(url)
+
+          //      $.ajax(
+          //          {
+          //              type: "DELETE", //HTTP POST Method
+          //              url: url, // Controller/View
+          //              success: function(data) {
+
+          //                  document.getElementById(id).remove();
+          //              }
+          //          }
+          //      );
+
+
+
+          //  });
+
+
+          function deleteAuthor(sender) {
                 console.log("hi")
         
           
@@ -524,6 +537,28 @@
                     }
                 );
             }
+
+
+
+            function updateAuthor(sender) {
+                let url = $(sender).next().attr("href");
+
+                console.log(url)
+
+                  $.ajax(
+                    {
+                        type: "GET", //HTTP POST Method
+                        url: url, // Controller/View
+                        success: function(data) {
+
+                            console.log(data)
+                        }
+                    }
+                );
+
+            }
+
+            
 
 
 
